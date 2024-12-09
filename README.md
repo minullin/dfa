@@ -1,5 +1,32 @@
 # DFA
 
+## Build & Run
+
+```sh
+docker compose build
+docker compose up
+```
+
+## Pipeline
+
+```mermaid
+flowchart LR
+    producer[<b>Producer</b><br>Students Health and Attendance Data]
+    kafka[<b>Kafka</b><br>students topic]
+    consumer1[<b>Consumer</b><br>Sleep Deprivation Detector #1]
+    consumer2[<b>Consumer</b><br>Sleep Deprivation Detector #2]
+    consumern[<b>Consumer</b><br>Sleep Deprivation Detector #N]
+    sink[<b>Sink</b><br>Console]
+
+    producer-->kafka
+    kafka-->consumer1
+    kafka-->consumer2
+    kafka-->consumern
+    consumer1-->sink
+    consumer2-->sink
+    consumern-->sink
+```
+
 ## Measurements
 
 sync producer, 20 partitions:
